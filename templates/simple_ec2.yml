@@ -11,11 +11,13 @@ Parameters:
       Default: "t1.nano"
       Description: "WebServer EC2 instance type"
       Type: "String"
-    sshKey:
-       Description: "Name of an existing EC2 KeyPair to enable SSH access to the instances"
-       ConstraintDescription: "must be the name of an existing EC2 KeyPair."
-       Type: AWS::EC2::KeyPair::KeyName
-       Default: "hertzner"
+
+      sshKey:
+         Description: "Name of an existing EC2 KeyPair to enable SSH access to the instances"
+         ConstraintDescription: "must be the name of an existing EC2 KeyPair."
+         Type: AWS::EC2::KeyPair::KeyName
+         Default: "hertzner"
+
 Resources:
    simpleInstance:
       Type: AWS::EC2::Instance
@@ -23,6 +25,7 @@ Resources:
          ImageId: "ami-0ca467408e84df23c"
          InstanceType: !Ref instanceType
          KeyName: !Ref sshKey
+
 Outputs:
    publicIp:
       Description: EC2 public IP
