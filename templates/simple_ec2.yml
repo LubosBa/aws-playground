@@ -12,11 +12,11 @@ Parameters:
       Description: "WebServer EC2 instance type"
       Type: "String"
 
-      sshKey:
-         Description: "Name of an existing EC2 KeyPair to enable SSH access to the instances"
-         ConstraintDescription: "must be the name of an existing EC2 KeyPair."
-         Type: AWS::EC2::KeyPair::KeyName
-         Default: "hertzner"
+   sshKey:
+      Description: "Name of an existing EC2 KeyPair to enable SSH access to the instances"
+      ConstraintDescription: "must be the name of an existing EC2 KeyPair."
+      Type: AWS::EC2::KeyPair::KeyName
+      Default: "hertzner"
 
 Resources:
    simpleInstance:
