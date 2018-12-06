@@ -3,12 +3,11 @@ Description: "This template will spawn simple ES2 instance."
 Parameters:
    instanceType:
       AllowedValues:
-         - t1.micro
-         - t1.nano
+         - t2.nano
          - t2.micro
          - t2.small
       ConstraintDescription: "must be a valid EC2 instance type."
-      Default: "t1.nano"
+      Default: "t2.micro"
       Description: "WebServer EC2 instance type"
       Type: "String"
 
@@ -23,10 +22,12 @@ Resources:
       Type: AWS::EC2::Instance
       Properties:
          ImageId: "ami-0ca467408e84df23c"
-         InstanceType: !Ref instanceType
-         KeyName: !Ref sshKey
+         InstanceType:
+            Ref: instanceType
+         KeyName:
+            Ref: sshKey
 
 Outputs:
    publicIp:
       Description: EC2 public IP
-      Value: !GetAtt instanceType.PublicIp
+      Value: !GetAtt simpleInstance.PublicIp
